@@ -19,7 +19,7 @@ url = "https://www.alta.ru/svh/";
 
 osmosis
     .get(url)
-    .paginate("//div[@class='pagination']/table//td[a[@href='/svh/page_84/']]/a[1]", 83)
+    .paginate("//div[@class='pagination']//tr/td[last()]/a", 83)
     .find("//div[@class='boxSubstrate boxSubstrate-offset-0 p-10']")
     .set({
         type: "text()",
