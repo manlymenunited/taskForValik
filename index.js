@@ -1,9 +1,9 @@
-var osmosis = require('osmosis');
-var Excel = require('exceljs');
+let osmosis = require('osmosis');
+let Excel = require('exceljs');
 
-var resultArr = [];
-var workbook = new Excel.Workbook();
-var sheet = workbook.addWorksheet('Sheet1');
+let resultArr = [];
+let workbook = new Excel.Workbook();
+let sheet = workbook.addWorksheet('Sheet1');
 sheet.columns = [
     { header: 'id', key: 'id' },
     { header: 'type', key: 'type' },
@@ -13,9 +13,8 @@ sheet.columns = [
     { header: 'licenceDate', key: 'licenceDate' },
     { header: 'customCode', key: 'customCode' },
     { header: 'address', key: 'address' },
-]
+];
 
-var counts = 0;
 url = "https://www.alta.ru/svh/";
 
 osmosis
@@ -32,10 +31,10 @@ osmosis
     .log(console.log)
     .data((data) => { resultArr.push(data); })
     .done(() => {
-        for (var i = 0; i < resultArr.length; i++) {
-            var arrLicense = new String(resultArr[i].license).split("\n");
-            for (var k = 0; k < arrLicense.length; k++) {
-                var myLicense = new String(arrLicense[k]).trim();
+        for (let i = 0; i < resultArr.length; i++) {
+            let arrLicense = resultArr[i].license.split("\n");
+            for (let k = 0; k < arrLicense.length; k++) {
+                let myLicense = arrLicense[k].trim();
                 sheet.addRow({
                     id: i,
                     type: resultArr[i].type.replace(/^\s+/g, ""),
